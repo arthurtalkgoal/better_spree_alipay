@@ -1,0 +1,6 @@
+en:
+  spree:
+    alipay:
+      click_and_pay: Please click the Alipay button to complete the payment.
+      error_non_rmb: For Alipay payment, please change currency to RMB first.
+      partner_trade: Partner Trade

@@ -1,0 +1,8 @@
+zh-TW:
+  spree:
+    alipay:
+      click_and_pay: 请按此支付宝以完成付款
+      error_non_rmb: 如欲使用支付寶，請先選擇人民幣交易！
+      partner_trade: 擔保交易
+  
+      
