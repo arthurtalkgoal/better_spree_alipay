@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::AlipayNotifyController do
+describe Spree::AlipayNotifyController, type: :controller do
 
   # Regression tests for #55
   context "not from alipay" do

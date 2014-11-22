@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::AlipayController do
+describe Spree::AlipayController, type: :controller do
 
   # Regression tests for #55
   context "when current_order is nil" do
