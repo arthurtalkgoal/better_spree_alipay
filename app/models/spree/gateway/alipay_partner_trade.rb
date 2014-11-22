@@ -26,10 +26,20 @@ module Spree
     def auto_capture?
       true
     end
+    
+    def source_required?
+      false
+    end
 
     def method_type
       'alipay_partner_trade'
     end
+    
+    
+    def purchase(money, source, gateway_options)
+      nil
+    end
+    
 
     def set_partner_trade(out_trade_no, order, return_url, notify_url, gateway_options={})
       raise unless preferred_pid && preferred_key && preferred_seller_email
@@ -66,10 +76,8 @@ module Spree
 
     
     
-      pp_details_response = provider.create_partner_trade_by_buyer_url(options)
+      return  provider.create_partner_trade_by_buyer_url(options)
 
-
-      return pp_details_response
     end
 
     

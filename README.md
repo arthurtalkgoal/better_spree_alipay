@@ -1,8 +1,9 @@
 better_spree_alipay
 ===================
 
-It is a wrapper for https://github.com/chloerei/alipay gem, using the https://github.com/spree/spree_gateway 
+It is a wrapper for https://github.com/chloerei/alipay gem, using the https://github.com/spree/spree_gateway.
 
+Notice that the Alipay only allow CNY(or RMB) payments. Therefore, your site should support CNY currency.
 
 Installation
 ===================

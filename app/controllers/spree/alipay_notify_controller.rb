@@ -1,6 +1,6 @@
 module Spree
   class AlipayNotifyController < ApplicationController
-    protect_from_forgery with: :null_session
+    skip_before_action :verify_authenticity_token
     
     def notify_web
       # except :controller_name, :action_name, :host, etc.
@@ -31,23 +31,17 @@ module Spree
         # confirm - The order is ready for a final review by the customer before being processed.
         # complete 
         if notify_params[:trade_status] == 'WAIT_SELLER_SEND_GOODS'
-          order_no = notify_params[:out_trade_no]
-          order = Spree::Order.find_by_guest_token(order_no).first || raise(ActiveRecord::RecordNotFound)
+          out_trade_no = notify_params[:out_trade_no]
+          payment = Spree::Payment.find_by_identifier(out_trade_no) || raise(ActiveRecord::RecordNotFound)
           
+          #payment.update_columns( :response_code => notify_params[:trade_no])
           
-          order.payments.create!({
-            :amount => order.total,
-            :payment_method => payment_method
-          })
-          order.next
-          if order.complete?
-            flash.notice = Spree.t(:order_processed_successfully)
-            flash[:commerce_tracking] = "nothing special"
-            session[:order_id] = nil
-          #  redirect_to completion_route(order)
-          #else
-          #  redirect_to checkout_state_path(order.state)
-          end
+          payment.complete!
+          
+#         o.next!
+          payment.order.next!
+
+
           
         end
         render :text => 'success'
