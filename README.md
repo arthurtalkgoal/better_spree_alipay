@@ -74,10 +74,3 @@ Push to the branch (git push origin my-new-feature)
 Create new Pull Request
 
 Please write unit test with your code if necessary.
-
-Donate
-===================
-
-Donate to maintainer let him make this gem better.
-
-Alipay donate link: http://chloerei.com/donate/ .
