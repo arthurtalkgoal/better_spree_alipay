@@ -44,10 +44,9 @@ module Spree
 
           
         end
-        render :text => 'success'
-      else
-        render :text => 'error'
+        return render :text => 'success'
       end
+      return render :text => 'error'
     end
     
     # Alipay status
